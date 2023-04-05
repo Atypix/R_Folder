@@ -1,0 +1,124 @@
+version: '3.7'
+
+services:
+
+    rbase:
+        image: r-base
+        container_name: rbase
+        volumes :
+            - ./analytics:/analytics 
+        
+    wsanalytics:
+        image: nginx:mainline-alpine
+        container_name: wsanalytics
+        depends_on:
+            - rbase
+        volumes:
+            - ./analytics.conf:/etc/nginx/conf.d/analytics.conf
+            - ./analytics:/analytics
+        ports:
+            - "8050"
+        
+        environment:
+            VIRTUAL_HOST: analytics.ecocup.com
+            LETSENCRYPT_HOST: analytics.ecocup.com
+            LETSENCRYPT_EMAIL: s.odion@ecocup.com
+            SSL_POLICY: Mozilla-Modern
+
+    mariadbanalytics:
+        image: mariadb
+        container_name: ecocup
+        environment:
+            MYSQL_ROOT_PASSWORD: M0dp4s66
+            MYSQL_USER: goach
+        volumes:
+            - ./data:/var/lib/mysql
+
+
+           
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        environment:
+            PMA_HOST: mariadbanalytics
+            VIRTUAL_HOST: pma-analytics.ecocup.com
+            LETSENCRYPT_HOST: pma-analytics.ecocup.com
+            LETSENCRYPT_EMAIL: s.odion@ecocup.com
+            SSL_POLICY: Mozilla-Modern
+
+    reverse-proxy-analytics:
+        image: nginx:mainline-alpine
+        container_name: reverse-proxy-analytics
+        ports:
+            - "80:80"
+            - "443:443" 
+        volumes:
+            - volume-reverse-proxy:/etc/nginx/conf.d
+            - ./certs:/etc/nginx/certs
+            - volume-reverse-proxy-html:/var/www/html
+            - volume-revser-proxy-vhost:/etc/nginx/vhost.d
+            - ./htpasswd:/etc/nginx/htpasswd
+        networks:
+            default:
+                aliases:
+                    - analytics.ecocup.com
+
+
+    dockergen:
+        image: jwilder/docker-gen
+        container_name: dockergen
+        depends_on:
+            - reverse-proxy
+        command: -notify-sighup reverse-proxy -watch /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/nutripack.conf  
+        command: -notify-sighup reverse-proxy -watch /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/proplast.conf 
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+            - volume-reverse-proxy:/etc/nginx/conf.d
+            - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl
+            - ./default.vhost.conf:/etc/nginx/vhost.d/default
+            - ./certs:/etc/nginx/certs
+            - ./htpasswd:/etc/nginx/htpasswd
+
+    nginx-letsencrypt:
+        image: jrcs/letsencrypt-nginx-proxy-companion
+        container_name: letsencrypt
+        depends_on:
+            - reverse-proxy-analytics
+            - dockergen
+            - wsnutripack
+            - wsproplast
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+            - ./certs:/etc/nginx/certs:rw
+            - volume-reverse-proxy:/etc/nginx/conf.d
+            - volume-reverse-proxy-html:/usr/share/nginx/html
+            - volume-revser-proxy-vhost:/etc/nginx/vhost.d
+            
+        environment:
+            NGINX_DOCKER_GEN_CONTAINER: dockergen
+            NGINX_PROXY_CONTAINER: reverse-proxy
+
+
+
+volumes:
+    volume-reverse-proxy:
+    volume-reverse-proxy-html:
+    volume-revser-proxy-vhost:
+    esdata1:
+    esdata2:
+    esdata3:
+    logs:
+    esdata1:
+
+
+
+
+
+
+
+  
+
+
+
+
+

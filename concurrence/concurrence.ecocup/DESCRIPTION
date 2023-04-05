@@ -1,0 +1,13 @@
+Package: concurrence.ecocup
+Title: Analyse concurrentielle pour Ecocup
+Version: 0.1.0
+Authors@R: 
+    person(given = "Goach",
+           family = "Ecocup",
+           role = c("aut", "cre"),
+           email = "s.odion@ecocup.com",
+           comment = structure("YOUR-ORCID-ID", .Names = "ORCID"))
+Description: What the package does (one paragraph).
+License: MIT
+Encoding: UTF-8
+LazyData: true

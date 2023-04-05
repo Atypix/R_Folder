@@ -1,0 +1,246 @@
+
+
+body {
+  background-color: #f2f2f2;
+  margin: 5%;
+}
+
+.two.columns {
+  width: 16.25%;
+}
+
+.dropdown-periode {
+  width:150px;
+  float:left;
+  margin-left:25px;
+  margin-top:5px;
+}
+.range-periode {
+  float:left;
+}
+
+p a {
+  color:green;
+  padding : 10px;
+  border: 1px solid green;
+  font-size:12px;
+  text-decoration:none;
+  font-family: arial;
+}
+
+.column,
+.columns {
+  margin-left: 0.5%;
+}
+#ca,  #tva {
+  float:left;
+  padding:20px;
+}
+#tva {
+  padding-top:28px;
+}
+#ca {
+  width:150px;
+}
+#count-facturation-restant {
+  color:red;
+}
+#count-facturation-paye {
+  color:green;
+}
+
+#count-facturation-tva {
+  color:blue;
+}
+
+.pretty_container {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+  height: 450px;
+}
+.pretty_container-map {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+  height: 530px;
+
+}
+.pretty_container-slider {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  padding-top: 5px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+  height: 100px;
+}
+#container-range-slider-facturation {
+  padding-left:20px;
+  font-weight:normal;
+  float:right;
+}
+
+#slider-facturation {
+
+  clear:both;
+}
+
+.pretty_container_big {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+  max-height:560px;
+  min-height:560px;
+  height:560px;
+}
+
+.loader {
+  margin-top:100px!important;
+}
+
+.pretty_container_column {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+  max-height:80px;
+  min-height:80px;
+  height:80px;
+}
+
+.bare_container {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.dcc_control {
+  margin: 0;
+  padding: 5px;
+  width: calc(100%-40px);
+}
+
+.control_label {
+  margin: 0;
+  padding: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  width: calc(100%-40px);
+}
+
+.rc-slider {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.container-display {
+  display: flex;
+  
+}
+
+#tabs-content {
+  background-color:white;
+  padding:30px;
+  border: 1px solid #d6d6d6;
+  border-top:none;
+}
+
+
+#aggregate_graph {
+  width: calc(100% - 30px);
+  position: relative;
+}
+
+#count_graph {
+  position: absolute;
+  height: calc(100% - 30px);
+  width: calc(100% - 30px);
+}
+
+#countGraphContainer {
+  flex: 5;
+  position: relative;
+}
+
+#header {
+  align-items: center;
+}
+
+#learn-more-button {
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+  text-transform: none;
+  font-size: 15px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 30px;
+}
+#title {
+  text-align: center;
+}
+
+.mini_container {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+
+#right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+#wells {
+  flex: 1;
+}
+
+#gas {
+  flex: 1;
+}
+
+#aggregate_data {
+  align-items: center;
+}
+
+#oil {
+  flex: 1;
+}
+
+#water {
+  flex: 1;
+}
+
+#tripleContainer {
+  display: flex;
+  flex: 3;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#pie_graph > div > div > svg:nth-child(3) > g.infolayer > g.legend {
+  pointer-events: all;
+  transform: translate(30px, 349px);
+}
