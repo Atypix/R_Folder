@@ -30,7 +30,7 @@ model %>% compile(
 )
 
 # Entrainement
-model %>% fit(data_input, data_target, epochs = 400, batch_size = 1)
+model %>% fit(data_input, data_target, epochs = 100, batch_size = 1)
 
 # Prediction
 next_input <- tail(data_scaled, n = 1)
