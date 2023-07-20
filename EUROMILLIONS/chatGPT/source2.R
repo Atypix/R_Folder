@@ -8,6 +8,7 @@ library(readr)
 # Préparation des données d'entraînement
 
 data <- read.csv("data_all.csv", sep=",", head=FALSE)
+data <- data[nrow(data):1,]
 # Preprocessing des données
 
 # Préprocessing
