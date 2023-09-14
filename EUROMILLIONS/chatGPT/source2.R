@@ -8,7 +8,7 @@ library(readr)
 # Préparation des données d'entraînement
 
 data <- read.csv("data_all.csv", sep=",", head=FALSE)
-data <- tail(data, n = 500)
+data <- tail(data, n = 200)
 # Preprocessing des données
 
 # Préprocessing
