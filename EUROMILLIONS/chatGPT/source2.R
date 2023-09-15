@@ -8,7 +8,7 @@ library(readr)
 # Préparation des données d'entraînement
 
 data <- read.csv("data_all.csv", sep=",", head=FALSE)
-data <- tail(data, n = 200)
+data <- tail(data, n = 100)
 # Preprocessing des données
 
 # Préprocessing
@@ -32,7 +32,7 @@ model %>% compile(
 )
 
 # Entrainement
-model %>% fit(data_input, data_target, epochs = 100, batch_size = 1)
+model %>% fit(data_input, data_target, epochs = 200, batch_size = 1)
 
 # Prediction
 next_input <- tail(data_scaled, n = 1)
