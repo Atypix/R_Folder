@@ -22,7 +22,7 @@ data_target <- data_scaled[2:nrow(data_scaled),1:2]
 # Definition du modele
 model <- keras_model_sequential() 
 model %>% 
-  layer_dense(units = 100, activation = "relu", input_shape = c(2)) %>% 
+  layer_dense(units = 200, activation = "relu", input_shape = c(2)) %>% 
   layer_dense(units = 2)
 
 model %>% compile(
